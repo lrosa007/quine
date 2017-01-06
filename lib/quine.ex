@@ -58,7 +58,7 @@ defmodule Quine do
         <h2>Intro</h2>
 
         <p>Hello, I am a server hosted on heroku. The micro-framework used in my creation
-        was <a href="https://github.com/elixir-maru/maru)">Maru</a>.
+        was <a href="https://github.com/elixir-maru/maru">Maru</a>.
         I only have two routes <code class="code-background">/code</code>
         and <code class="code-background">/home</code>. The first route simply returns
         some JSON containing my source code and the second route displays this page you

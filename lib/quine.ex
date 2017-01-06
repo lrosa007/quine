@@ -14,7 +14,7 @@ defmodule Quine do
     html conn, """
     <html>
       <body>
-        yo!!!
+        Whats up F
       </body>
     </html>
     """

@@ -14,11 +14,12 @@ defmodule Quine.Mixfile do
   #
   # Type "mix help compile.app" for more information
   def application do
-    [applications: [:logger, :maru]]
+    [applications: (Mix.env == :dev && [:exsync] || []) ++ [:logger, :maru]]
   end
 
   defp deps do
     [{:maru, "~> 0.11"},
-     {:earmark, "~> 1.0"}]
+     {:earmark, "~> 1.0"},
+     {:exsync, "~> 0.1", only: :dev}]
   end
 end

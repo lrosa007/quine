@@ -1,0 +1,2 @@
+defmodule Quine do
+end

@@ -7,7 +7,7 @@ defmodule Quine do
     parsers: [:urlencoded, :json, :multipart]
 
   get "/code" do
-    json conn, %{hello: :world}
+    json conn, %{code: File.read! "lib/quine.ex" }
   end
 
   get "/home" do

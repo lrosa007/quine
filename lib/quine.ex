@@ -28,29 +28,53 @@ defmodule Quine do
     """
     <html>
       <head>
+        <style type="text/css">
+          body {
+            margin: 20px 150px;
+          }
+          h1 {
+            text-align: center;
+          }
+          #countdown {
+            text-align: center;
+            font-size: 16px;
+            font-weight: bold;
+          }
+          .code-background {
+            background-color: #f0f0f0;
+            padding: 1px;
+          }
+        </style>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/default.min.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/elixir.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/fetch/2.0.1/fetch.min.js"></script>
       </head>
       <body>
         <h1>Maru Quine</h1>
 
-        <p>Take home code challenge for Kipu</p>
+        <p align="center">Take home code challenge for Kipu</p>
 
         <h2>Intro</h2>
 
-        <p>Hello, I am a server hosted on heroku. The micro-framework used in my creation was <a href="https://github.com/elixir-maru/maru)">Maru</a>.
-        I only have two routes <code>/code</code> and <code>/home</code>. The first route simply returns
-        some JSON containing my source code and the second route displays this page you are looking at right now.</p>
+        <p>Hello, I am a server hosted on heroku. The micro-framework used in my creation
+        was <a href="https://github.com/elixir-maru/maru)">Maru</a>.
+        I only have two routes <code class="code-background">/code</code>
+        and <code class="code-background">/home</code>. The first route simply returns
+        some JSON containing my source code and the second route displays this page you
+        are looking at right now. Check out the code that does it all:</p>
 
-        <main>
-          <div id="countdown">
-          </div>
+        <main class="code-background">
           <pre>
             <code id="code" class="elixir">
+              <div id="countdown"></div>
             </code>
           </pre>
         </main>
 
         <script>
+          hljs.initHighlightingOnLoad();
+
           const request = (url, options) =>
             fetch(url, options)
               .then(checkStatus)
@@ -71,15 +95,13 @@ defmodule Quine do
           }
 
           const counter = (n) => {
-            let counterDiv = document.getElementById("countdown");
-
             if (n == 0) {
-              counterDiv.textContent = "";
+              document.getElementById("code").innerHTML = "";
               request("#{Application.get_env(:quine, :api_url)}/code");
               return;
             }
 
-            counterDiv.textContent = n;
+            document.getElementById("countdown").textContent = n;
 
             setTimeout(() => {
               counter(n-1);

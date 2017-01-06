@@ -75,7 +75,7 @@ defmodule Quine do
 
             if (n == 0) {
               counterDiv.textContent = "";
-              request("http://localhost:8000/code");
+              request("#{Application.get_env(:quine, :api_url)}/code");
               return;
             }
 

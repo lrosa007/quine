@@ -1,1 +1,0 @@
-web: iex -S mix

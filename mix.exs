@@ -14,7 +14,7 @@ defmodule Quine.Mixfile do
   #
   # Type "mix help compile.app" for more information
   def application do
-    [applications: [:logger]]
+    [applications: [:logger, :maru]]
   end
 
   defp deps do
